@@ -109,6 +109,7 @@ ggplot(womeninpower)+
   theme_void()+
   theme(
     plot.title = element_text(hjust = 0.2, vjust = -2, size = 27, family = "Founders Grotesk Light"),
-    plot.caption = element_text(family = "Founders Grotesk Light", hjust = 0.9, vjust = 20)
+    plot.caption = element_text(family = "Founders Grotesk Light", hjust = 0.9, vjust = 20),
+    aspect.ratio = 0.8
   ) 
 ggsave("women-in-power.png", width = 20, height = 13, units = "in")
