@@ -64,19 +64,19 @@ ggplot(womeninpower)+
                 aes(x = 0, y = year, label = year), 
                 label.color = NA, 
                 label.padding = unit(0.1, "lines"), 
-                family = "Founders Grotesk Light", 
+                family = "NYTFranklin Light", 
                 size = 7)+
 #best country for female rep
   geom_richtext(data = top1_19972019, aes(x = 0.1, y = year, label = country_name),
                 label.color = NA, 
                 label.padding = unit(0.1, "lines"), 
-                family = "Founders Grotesk Light", 
+                family = "NYTFranklin Light", 
                 size = 6)+
 #av. proportion of women
   geom_richtext(data = percentchange, aes(x = 0.2, y = year, label = glue("{round(women_prop, 2)}%")), 
                 label.color = NA, 
                 label.padding = unit(0.1, "lines"), 
-                family = "Founders Grotesk Light", 
+                family = "NYTFranklin Light", 
                 size = 6)+
   geom_segment(data = percentchange, 
                aes(x = 0.24, xend = (women_prop/2.5) + 0.23, y = year, yend = year),
@@ -85,7 +85,7 @@ ggplot(womeninpower)+
   geom_richtext(data = percentchange, aes(x = 0.4, y = year, label = ifelse(is.na(pct_diff), "", glue("{round(pct_diff, 2)}%"))), 
                 label.color = NA, 
                 label.padding = unit(0.1, "lines"), 
-                family = "Founders Grotesk Light", 
+                family = "NYTFranklin Light", 
                 size = 6,
                 col = "darkgreen")+
   geom_segment(data = percentchange, 
@@ -94,11 +94,11 @@ ggplot(womeninpower)+
 #adding points for proportions
   geom_jitter(aes(x = (women_prop/1.5 + 0.6), y = year, col = women_prop), show.legend = F)+
 #adding proportion labels
-  annotate("text", x = c(0.6, 0.6+0.33, 0.6+0.66), y = 2019.5, label = c("0", "50%", "100%"), hjust = c(0, 0.5, 1), family = "Founders Grotesk Light", size = 3)+
+  annotate("text", x = c(0.6, 0.6+0.33, 0.6+0.66), y = 2019.5, label = c("0", "50%", "100%"), hjust = c(0, 0.5, 1), family = "NYTFranklin Light", size = 3)+
 #adding a line for 50%
   annotate("segment", x = 0.6+0.33, xend = 0.6+0.33, y = 1997, yend = 2019, size = 0.3, alpha = 0.5)+
 #adding labels
-  annotate("text", x = c(0, 0.1, 0.2, 0.4, 0.6+0.33), y = 2020, label = toupper(c("year", "country with \nmost women", "average %", "% change", "distribution")), hjust = 0.5, family = "Founders Grotesk Light", size = 3.5) +
+  annotate("text", x = c(0, 0.1, 0.2, 0.4, 0.6+0.33), y = 2020, label = toupper(c("year", "country with \nmost women", "average %", "% change", "distribution")), hjust = 0.5, family = "NYTFranklin Light", size = 3.5) +
 #adding labels
   labs(
     title = toupper("proportion of women in national parliaments around the world 1997-2019"),
@@ -108,8 +108,9 @@ ggplot(womeninpower)+
   scale_colour_gradient(low = "red", high = "green", name = "proportion of women")+
   theme_void()+
   theme(
-    plot.title = element_text(hjust = 0.2, vjust = -2, size = 27, family = "Founders Grotesk Light"),
-    plot.caption = element_text(family = "Founders Grotesk Light", hjust = 0.9, vjust = 20),
+    plot.title = element_text(hjust = 0.2, vjust = -2, size = 27, family = "NYTFranklin Light"),
+    plot.caption = element_text(family = "NYTFranklin Light", hjust = 0.9, vjust = 20),
     aspect.ratio = 0.8
   ) 
-ggsave("women-in-power.png", width = 20, height = 13, units = "in")
+ggsave("women-in-power.png", width = 14, height = 9, units = "in")
+
