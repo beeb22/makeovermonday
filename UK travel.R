@@ -30,6 +30,7 @@ visits_month$journeys <- as.numeric(visits_month$journeys)
 visits_quarter$journeys <- as.numeric(visits_quarter$journeys)
 visits_year$journeys <- as.numeric(visits_year$journeys)
 visits_year$year <- as.numeric(visits_year$year)
+visits_year$year <- as.Date(paste(visits_year$year, 1, 1, sep = "-"))
 visits_quarter$year <- yq(visits_quarter$year)
 visits_month$year <- ymd(visits_month$year, truncated = 1)
 
@@ -90,8 +91,9 @@ p_month <-
     axis.text = element_text(family = "NYTFranklin Light"),
     axis.title = element_text(family = "NYTFranklin Light")
   )
-
-p_yearchange <- 
+visits_year %>%
+  tail()
+#p_yearchange <- 
   ggplot(visits_year)+
   geom_col(aes(year, change_percent), fill = "#006D2C", alpha = 0.5, width = 100,
            show.legend = F)+
