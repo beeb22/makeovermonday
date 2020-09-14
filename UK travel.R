@@ -60,24 +60,23 @@ tb$change <- sum(dates_2020$journeys) - sum(dates_2019$journeys)
 tb$change_percent <- (sum(dates_2020$journeys) - sum(dates_2019$journeys))/sum(dates_2019$journeys)
 visits_year <- rbind(visits_year, tb)
 
-visits_year$year <- as.Date(paste(visits_year$year, 1, 1, sep = "-"))
 visits_year
 
 p_month <- 
   visits_month %>%
   slice(-c(1:12)) %>%
   ggplot()+
-  geom_line(aes(year, journeys, col = journeys), show.legend = F)+
+  geom_line(aes(year, journeys, col = journeys), alpha = 0.5, show.legend = F)+
   scale_color_continuous(low = "#A1D99B", high = "#006D2C")+
   geom_rect(aes(xmin = as.Date(as.yearqtr("1990 Q3")), xmax = as.Date(as.yearqtr("1991 Q3")),
                 ymin = -Inf, ymax = Inf),
-            alpha = 0.01, fill = "gray83")+
+            alpha = 0.01, fill = "gray86")+
   geom_rect(aes(xmin = as.Date(as.yearqtr("2008 Q2")), xmax = as.Date(as.yearqtr("2009 Q2")),
                 ymin = -Inf, ymax = Inf),
-            alpha = 0.01, fill = "gray83")+
+            alpha = 0.01, fill = "gray86")+
   geom_rect(aes(xmin = as.Date("2020-01-01"), xmax = as.Date("2020-03-01"), 
                 ymin = -Inf, ymax = Inf),
-            alpha = 0.01, fill = "gray83")+
+            alpha = 0.01, fill = "gray86")+
   scale_y_continuous(labels = scales::comma)+
   labs(
     subtitle = "UK visits abroad each quarter",
@@ -91,9 +90,8 @@ p_month <-
     axis.text = element_text(family = "NYTFranklin Light"),
     axis.title = element_text(family = "NYTFranklin Light")
   )
-visits_year %>%
-  tail()
-#p_yearchange <- 
+
+p_yearchange <- 
   ggplot(visits_year)+
   geom_col(aes(year, change_percent), fill = "#006D2C", alpha = 0.5, width = 100,
            show.legend = F)+
